@@ -12,13 +12,13 @@ node.js的回调函数
 node事件循环
 node是单线程单进程的，引入v8引擎的异步执行回调接口，所以可以处理大量的并发。
 <img src="img/event_loop.jpg"></img>
-#####node使用事件驱动程序，当web server接收到事件请求，就把它关闭然后进行处理，然后去服务下一个web请求。当这个请求完成，它被放回处理队列，当到达队列开头，这个结果被返回给用户。
-#####在这个过程中，web server一直接受请求而不等待任何读写操作。
-#####创建mainWhile.js(1.引入模块 2.绑定事件处理机制 3.触发指定的事件)
+node使用事件驱动程序，当web server接收到事件请求，就把它关闭然后进行处理，然后去服务下一个web请求。当这个请求完成，它被放回处理队列，当到达队列开头，这个结果被返回给用户。
+在这个过程中，web server一直接受请求而不等待任何读写操作。
+创建mainWhile.js(1.引入模块 2.绑定事件处理机制 3.触发指定的事件)
 <img src="img/mainWhile.png"></img>
 
-#####EventEmitter类，events模块只提供了一个对象(events.EventEmitter)，EventEmitter 的核心就是事件触发与事件监听器功能的封装。
-#####EventEmitter属性介绍: {
+EventEmitter类，events模块只提供了一个对象(events.EventEmitter)，EventEmitter 的核心就是事件触发与事件监听器功能的封装。
+EventEmitter属性介绍: {
        方法: {
                1.addListener(event, listener)    // 为指定事件添加一个监听器到监听器数组的尾部。
                2.on(event, listener) // 为指定事件注册一个监听器，接受一个字符串 event 和一个回调函数。
@@ -38,40 +38,43 @@ node是单线程单进程的，引入v8引擎的异步执行回调接口，所�
               2.removeListener(emitter, event) // 从指定监听器数组中删除一个监听器。需要注意的是，此操作将会改变处于被删监听器之后的那些监听器的索引。
        }
 }
-#####创建connection.js(方法测试)
+创建connection.js(方法测试)
 <img src="img/connect.png"></img>
 
-#####当必须使用到二进制数据的时候，node定义了Buffer类，该类用来创建一个专门存放二进制数据的缓存区
+当必须使用到二进制数据的时候，node定义了Buffer类，该类用来创建一个专门存放二进制数据的缓存区
 
-#####Stream是一个抽象接口，发送http请求的request对象即是。有四种流类型
-#####1.Readable // 可读操作
-#####2.Writable // 可写操作。
-#####3.Duplex // 可读可写操作.
-#####4.Transform // 操作被写入数据，然后读出结果。
+Stream是一个抽象接口，发送http请求的request对象即是。有四种流类型：{
+       1.Readable // 可读操作
+       2.Writable // 可写操作。
+       3.Duplex // 可读可写操作.
+       4.Transform // 操作被写入数据，然后读出结果。
+}
 
-#####所有的 Stream 对象都是 EventEmitter 的实例。常用的事件有：
-#####1.data - 当有数据可读时触发。
-#####2.end - 没有更多的数据可读时触发。
-#####3.error - 在接收和写入过程中发生错误时触发。
-#####4.finish - 所有数据已被写入到底层系统时触发。
+所有的 Stream 对象都是 EventEmitter 的实例。常用的事件有：{
+       1.data - 当有数据可读时触发。
+       2.end - 没有更多的数据可读时触发。
+       3.error - 在接收和写入过程中发生错误时触发。
+       4.finish - 所有数据已被写入到底层系统时触发。
+}
 
-#####从流中读取数据
-#####创建readData.txt和创建readData.js
+
+从流中读取数据
+创建readData.txt和创建readData.js
 <img src="img/readData.png"></img>
 
-#####写入流到outputData.txt
-#####创建writeData.js
-#####执行后会在目录生成outputData.txt，内容则是在writeData.js中定义要写入的内容
+写入流到outputData.txt
+创建writeData.js
+执行后会在目录生成outputData.txt，内容则是在writeData.js中定义要写入的内容
 <img src="img/writeData.png"></img>
 
-#####管道流，读取source的文件流入到dest中
-#####创建pipe.js,这边以readData.txt作为source，以pipeData.txt作为des
-#####执行后会把readData.txt的内容写到pipeData.txt中
+管道流，读取source的文件流入到dest中
+创建pipe.js,这边以readData.txt作为source，以pipeData.txt作为des
+执行后会把readData.txt的内容写到pipeData.txt中
 
-#####链式流，通过连接输出流到另外一个流。一般用于管道操作
-#####创建compress.js(压缩文件)
-#####执行完compress.js之后会在目录中生成compress.txt和compress.txt.gz
-#####创建decompress.js(解压文件)
-#####目录中的decompress.txt.gz解压生成一个新的名为decompress.txt的文件
+链式流，通过连接输出流到另外一个流。一般用于管道操作
+创建compress.js(压缩文件)
+执行完compress.js之后会在目录中生成compress.txt和compress.txt.gz
+创建decompress.js(解压文件)
+目录中的decompress.txt.gz解压生成一个新的名为decompress.txt的文件
 
 
