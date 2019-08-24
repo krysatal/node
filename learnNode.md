@@ -41,4 +41,37 @@
 #####创建connection.js(方法测试)
 <img src="img/connect.png"></img>
 
+#####当必须使用到二进制数据的时候，node定义了Buffer类，该类用来创建一个专门存放二进制数据的缓存区
+
+#####Stream是一个抽象接口，发送http请求的request对象即是。有四种流类型
+#####1.Readable // 可读操作
+#####2.Writable // 可写操作。
+#####3.Duplex // 可读可写操作.
+#####4.Transform // 操作被写入数据，然后读出结果。
+
+#####所有的 Stream 对象都是 EventEmitter 的实例。常用的事件有：
+#####1.data - 当有数据可读时触发。
+#####2.end - 没有更多的数据可读时触发。
+#####3.error - 在接收和写入过程中发生错误时触发。
+#####4.finish - 所有数据已被写入到底层系统时触发。
+
+#####从流中读取数据
+#####创建readData.txt和创建readData.js
+<img src="img/readData.png"></img>
+
+#####写入流到outputData.txt
+#####创建writeData.js
+#####执行后会在目录生成outputData.txt，内容则是在writeData.js中定义要写入的内容
+<img src="img/writeData.png"></img>
+
+#####管道流，读取source的文件流入到dest中
+#####创建pipe.js,这边以readData.txt作为source，以pipeData.txt作为des
+#####执行后会把readData.txt的内容写到pipeData.txt中
+
+#####链式流，通过连接输出流到另外一个流。一般用于管道操作
+#####创建compress.js(压缩文件)
+#####执行完compress.js之后会在目录中生成compress.txt和compress.txt.gz
+#####创建decompress.js(解压文件)
+#####目录中的decompress.txt.gz解压生成一个新的名为decompress.txt的文件
+
 
