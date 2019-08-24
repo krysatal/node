@@ -2,6 +2,11 @@
 #####例如我们可以一边读取文件，一遍进行其他操作，在文件读取完毕之后，我们将文件内容作为回调参数返回，这样代码就不会阻塞。
 
 #####创建input.txt
-#####创建main.js
+#####创建main.js（阻塞状态）
 
 <img src="img/zs.png"></img>
+
+#####创建mainCorrect.js(非阻塞状态)
+<img src="img/fzs.png"></img>
+
+
