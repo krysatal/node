@@ -74,4 +74,8 @@
 #####创建decompress.js(解压文件)
 #####目录中的decompress.txt.gz解压生成一个新的名为decompress.txt的文件
 
+#####node中的模块系统,module.export
+
+#####node路由（与apache不同的是没有真实的物理映射关系，这叫做顶层路由设计，能够制作顶层的路由设计的语言比较流行的只有node.js和python）
+#####创建router.js和router.json
 
